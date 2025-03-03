@@ -24,10 +24,15 @@ const Generator = () => {
             key: ''
         });
     }
+
+    const isDisabled = () => {
+        return newValues.phrase === '' || newValues.key === '';
+    }
  
     return (
     <div className='main-container'>
       <input
+        data-testid='phrase'
         name='phrase'
         type='text'
         value={newValues.phrase}
@@ -35,21 +40,22 @@ const Generator = () => {
         placeholder='Phrase'
         />
       <input
+        data-testid='key'
         name='key'
         type='text'
         value={newValues.key}
         onChange={onInputChange}
         placeholder='Secret Key'
         />
-      <Button onClick={() => generateEncryption()}/>
-      { newHmac && 
-        <>
-            <h3>GENERATED RESULT</h3>
-            <div className='result-container'>
-                <p>{newHmac}</p>
-            </div>
-        </>
-      }
+      <Button onClick={() => generateEncryption()} disabled={isDisabled()}/>
+        { newHmac && 
+            <>
+                <h3>GENERATED RESULT</h3>
+                <div className='result-container'>
+                    <p>{newHmac}</p>
+                </div>
+            </>
+        }
     </div>
     );
 };
