@@ -31,6 +31,7 @@ const Generator = () => {
  
     return (
     <div className='main-container'>
+      {/* TODO: Future - Move these inputs to a separate component */}
       <input
         data-testid='phrase'
         name='phrase'
