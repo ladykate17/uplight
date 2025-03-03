@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
+import './generator.styles.css';
 import Button from '../Button/button.component.tsx';
 
 const Generator = () => {
@@ -41,9 +42,14 @@ const Generator = () => {
         placeholder='Secret Key'
         />
       <Button onClick={() => generateEncryption()}/>
-      <div>
-        {newHmac}
-      </div>
+      { newHmac && 
+        <>
+            <h3>GENERATED RESULT</h3>
+            <div className='result-container'>
+                <p>{newHmac}</p>
+            </div>
+        </>
+      }
     </div>
     );
 };
